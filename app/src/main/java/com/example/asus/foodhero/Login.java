@@ -18,7 +18,7 @@ public class Login extends AppCompatActivity implements OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
 
-        b1=(Button)findViewById(R.id.button2);
+        //b1=(Button)findViewById(R.id.button2);
 
 
 
