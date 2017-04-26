@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FOODHERO.iml" filepath="$PROJECT_DIR$/FOODHERO.iml" />
       <module fileurl="file://$PROJECT_DIR$/FinalFood.iml" filepath="$PROJECT_DIR$/FinalFood.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
