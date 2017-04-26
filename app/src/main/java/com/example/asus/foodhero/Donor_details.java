@@ -12,10 +12,8 @@ public class Donor_details extends AppCompatActivity implements OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.donor_details);
-
-
-
+      setContentView(R.layout.donor_details);
+//This is me,,,,,,,,,,,Helllo sourav helloooooooo   ,mkkkjnjjbbjjjnjkhjkkjnk
 
         // Example of a call to a native method
         // TextView tv = (TextView) findViewById(R.id.sample_text);

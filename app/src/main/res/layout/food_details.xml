@@ -2,20 +2,28 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@color/colorAccent">
+    >
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@mipmap/xyz" />
 
     <EditText
         android:id="@+id/editText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="25dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text=""
+        android:text="Paneer Masala"
         android:hint="Item"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="19dp" />
+        android:layout_toStartOf="@+id/imageView5"
+        android:layout_marginEnd="17dp" />
 
     <EditText
         android:id="@+id/editText4"
@@ -26,7 +34,7 @@
         android:layout_marginTop="32dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text=""
+        android:text="For 2 people Max"
         android:hint="Quantity" />
 
     <EditText
@@ -36,7 +44,7 @@
         android:layout_marginTop="36dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text=""
+        android:text="1 day"
         android:hint="Shelf Life"
         android:layout_below="@+id/editText4"
         android:layout_alignStart="@+id/editText4" />
@@ -57,11 +65,10 @@
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editText7"
+        app:srcCompat="@mipmap/butter_paneer_masala"
         android:layout_below="@+id/editText7"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="52dp"
-        app:srcCompat="@android:drawable/btn_dialog" />
+        android:layout_alignStart="@+id/editText7"
+        android:layout_marginTop="12dp" />
 
     <Button
         android:id="@+id/button"
@@ -69,8 +76,16 @@
         android:layout_height="wrap_content"
         android:text="Donate"
         android:onClick="onClick"
-        android:layout_marginEnd="87dp"
-        android:layout_alignTop="@+id/imageView2"
-        android:layout_alignParentEnd="true" />
+        android:layout_marginTop="48dp"
+        android:layout_below="@+id/editText7"
+        android:layout_alignStart="@+id/imageView5" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose another picture"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/imageView2" />
 
 </RelativeLayout>

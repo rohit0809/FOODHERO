@@ -18,14 +18,14 @@ public class Login extends AppCompatActivity implements OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
 
-        //b1=(Button)findViewById(R.id.button2);
+        b1=(Button)findViewById(R.id.button2);
 
 
 
 
-    // Example of a call to a native method
-   // TextView tv = (TextView) findViewById(R.id.sample_text);
-    //tv.setText(stringFromJNI());
+        // Example of a call to a native method
+        // TextView tv = (TextView) findViewById(R.id.sample_text);
+        //tv.setText(stringFromJNI());
     }
 
     /**
@@ -41,7 +41,7 @@ public class Login extends AppCompatActivity implements OnClickListener{
 
     @Override
     public void onClick(View v) {
-       Intent i=new Intent(this,Food_Details.class);
+        Intent i=new Intent(this,LoginActivity.class);
         startActivity(i);
     }
 }

@@ -4,19 +4,26 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 
 
-public class Food_Details extends AppCompatActivity implements OnClickListener{
-
+public class Food_Details extends AppCompatActivity{
+Button b1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.food_details);
+b1=(Button)findViewById(R.id.button);
 
-
-
+b1.setOnClickListener(new OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent i=new Intent(Food_Details.this,Waiting.class);
+        startActivity(i);
+    }
+});
 
         // Example of a call to a native method
         // TextView tv = (TextView) findViewById(R.id.sample_text);
@@ -34,9 +41,4 @@ public class Food_Details extends AppCompatActivity implements OnClickListener{
         System.loadLibrary("native-lib");
     }
 
-    @Override
-    public void onClick(View v) {
-        Intent i=new Intent(this,Donor_details.class);
-        startActivity(i);
-    }
 }
