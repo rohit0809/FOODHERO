@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "809033476012",
+    "firebase_url": "https://foodhero-3684a.firebaseio.com",
+    "project_id": "foodhero-3684a",
+    "storage_bucket": "foodhero-3684a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:809033476012:android:ecf2087dcddfbb4e",
+        "android_client_info": {
+          "package_name": "com.example.asus.foodhero"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "809033476012-fmjifdmq6uf9frkcn5bge01l5kr7rqmi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgcXnyghWHjOATO9lKbiDmPLEO6SiXkxQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
