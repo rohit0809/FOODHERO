@@ -56,8 +56,9 @@ public class UseGPS extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i3=new Intent(UseGPS.this,Food_Details.class);
+                Intent i3=new Intent(UseGPS.this,Donation_Manager.class);
                 startActivity(i3);
+
             }
         });
         textView=(TextView)findViewById(R.id.textView);

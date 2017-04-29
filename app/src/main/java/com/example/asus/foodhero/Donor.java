@@ -11,12 +11,11 @@ public class Donor {
     String  e2;
     String  e3;
     String  e4;
-    String  e5;
+
 
     public String getE1() {
         return e1.toString();
     }
-
 
     public void setE1(EditText e1) {
         this.e1 = e1.getText().toString();

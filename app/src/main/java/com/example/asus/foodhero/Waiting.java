@@ -17,7 +17,7 @@ public class Waiting extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i1=new Intent(Waiting.this,Food_Details.class);
+                Intent i1=new Intent(Waiting.this,Donation_Manager.class);
                 startActivity(i1);
             }
         });

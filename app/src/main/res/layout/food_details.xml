@@ -24,7 +24,7 @@
         android:layout_alignParentTop="true"
         android:layout_toStartOf="@+id/imageView5"
         android:layout_marginEnd="17dp" />
-
+//2 is foodtype 4 is quantity 5 is shelflife 7 is others
     <EditText
         android:id="@+id/editText4"
         android:layout_width="wrap_content"
@@ -87,5 +87,14 @@
         android:text="Choose another picture"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/imageView2" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText4"
+        android:spinnerMode="dropdown"
+        android:layout_alignStart="@+id/imageView5" />
+
 
 </RelativeLayout>
