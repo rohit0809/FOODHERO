@@ -42,7 +42,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.jar.Manifest;
 
-public class UseGPS extends AppCompatActivity {
+public class SearchManager extends AppCompatActivity {
 
     Button button,b1;
     TextView textView;
@@ -56,8 +56,11 @@ public class UseGPS extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i3=new Intent(UseGPS.this,Donation_Manager.class);
-                startActivity(i3);
+                Intent i = new Intent(SearchManager.this, RequestManager
+                        .class);
+                i.putExtra("epuzzle",textView.getText().toString());
+                startActivity(i);
+
 
             }
         });
@@ -65,20 +68,20 @@ public class UseGPS extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view)
             {
-                if(ContextCompat.checkSelfPermission(UseGPS.this,
+                if(ContextCompat.checkSelfPermission(SearchManager.this,
                         android.Manifest.permission.ACCESS_COARSE_LOCATION)!=
                         PackageManager.PERMISSION_GRANTED)
                 {
-                    if(ActivityCompat.shouldShowRequestPermissionRationale(UseGPS.this,
+                    if(ActivityCompat.shouldShowRequestPermissionRationale(SearchManager.this,
                             android.Manifest.permission.ACCESS_COARSE_LOCATION))
                     {
-                        ActivityCompat.requestPermissions(UseGPS.this,
+                        ActivityCompat.requestPermissions(SearchManager.this,
                                 new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION},MY_PERMISSION_REQUEST_LOCATION);
 
                     }
                     else
                     {
-                        ActivityCompat.requestPermissions(UseGPS.this,
+                        ActivityCompat.requestPermissions(SearchManager.this,
                                 new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION},MY_PERMISSION_REQUEST_LOCATION);
                     }
                 }
@@ -88,11 +91,12 @@ public class UseGPS extends AppCompatActivity {
                     Location location=locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                     try {
                         textView.setText(hereLocation(location.getLatitude(), location.getLongitude()));
+
                     }
                     catch (Exception e)
                     {
                         e.printStackTrace();
-                        Toast.makeText(UseGPS.this,"Not found",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SearchManager.this,"Not found",Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -108,7 +112,7 @@ public class UseGPS extends AppCompatActivity {
             case MY_PERMISSION_REQUEST_LOCATION:{
                 if(grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED)
                 {
-                    if(ContextCompat.checkSelfPermission(UseGPS.this,
+                    if(ContextCompat.checkSelfPermission(SearchManager.this,
                             android.Manifest.permission.ACCESS_COARSE_LOCATION)==PackageManager.PERMISSION_GRANTED)
                     {
                         LocationManager locationManager=(LocationManager)getSystemService(Context.LOCATION_SERVICE);
@@ -119,12 +123,12 @@ public class UseGPS extends AppCompatActivity {
                         catch (Exception e)
                         {
                             e.printStackTrace();
-                            Toast.makeText(UseGPS.this,"Not found",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SearchManager.this,"Not found",Toast.LENGTH_SHORT).show();
                         }
                     }
                     else
                     {
-                        Toast.makeText(UseGPS.this,"No permission granted",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SearchManager.this,"No permission granted",Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -134,7 +138,7 @@ public class UseGPS extends AppCompatActivity {
     public String hereLocation(double lat, double lon)
     {
         String ourCity="";
-        Geocoder geocoder=new Geocoder(UseGPS.this, Locale.getDefault());
+        Geocoder geocoder=new Geocoder(SearchManager.this, Locale.getDefault());
         List<Address> addressList;
         try {
             addressList=geocoder.getFromLocation(lat,lon,1);

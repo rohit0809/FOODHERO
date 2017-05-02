@@ -47,8 +47,36 @@ public class Food_Item {
         this.shelflife = shelflife;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getDonorid() {
+        return donorid;
+    }
+
+    public void setDonorid(String donorid) {
+        this.donorid = donorid;
+    }
+
+    String donorid;
+    String location;
     String FoodType;
     String Requestid;
     String quantity;
     String shelflife;
+
+    public String getLandmark() {
+        return Landmark;
+    }
+
+    public void setLandmark(String landmark) {
+        Landmark = landmark;
+    }
+
+    String Landmark;
 }

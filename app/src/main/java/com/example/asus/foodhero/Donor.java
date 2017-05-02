@@ -7,42 +7,51 @@ import android.widget.EditText;
  */
 
 public class Donor {
-    String  e1;
-    String  e2;
-    String  e3;
-    String  e4;
-
-
-    public String getE1() {
-        return e1.toString();
+    String  name;
+    String  contact;
+    String  email;
+    String  password;
+    String donorid;
+    public String getDonorid() {
+        return donorid;
     }
 
-    public void setE1(EditText e1) {
-        this.e1 = e1.getText().toString();
+    public void setDonorid(String donorid) {
+        this.donorid = donorid;
     }
 
-    public String getE2() {
-        return e2.toString();
+
+
+    public String getName() {
+        return name.toString();
     }
 
-    public void setE2(EditText e2) {
-        this.e2 = e2.getText().toString();
+    public void setName(EditText name) {
+        this.name = name.getText().toString();
     }
 
-    public String getE3() {
-        return e3.toString();
+    public String getContact() {
+        return contact.toString();
     }
 
-    public void setE3(EditText e3) {
-        this.e3 = e3.getText().toString();
+    public void setContact(EditText contact) {
+        this.contact = contact.getText().toString();
     }
 
-    public String getE4() {
-        return e4.toString();
+    public String getEmail() {
+        return email.toString();
     }
 
-    public void setE4(EditText e4) {
-        this.e4 = e4.getText().toString();
+    public void setEmail(EditText email) {
+        this.email = email.getText().toString();
+    }
+
+    public String getPassword() {
+        return password.toString();
+    }
+
+    public void setPassword(EditText password) {
+        this.password = password.getText().toString();
     }
 
 

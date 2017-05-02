@@ -34,11 +34,13 @@ package com.example.asus.foodhero;
         import android.widget.TextView;
         import android.widget.Toast;
 
+        import com.google.android.gms.common.api.ResultCallback;
         import com.google.android.gms.tasks.OnCompleteListener;
         import com.google.android.gms.tasks.Task;
         import com.google.firebase.auth.AuthResult;
         import com.google.firebase.auth.FirebaseAuth;
         import com.google.firebase.auth.FirebaseUser;
+        import com.google.firebase.auth.UserProfileChangeRequest;
 
         import java.util.ArrayList;
         import java.util.List;
@@ -100,7 +102,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                    //  Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+
+
+                        //  Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
                     //   Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -137,7 +141,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             public void onClick(View view) {
 
 
-            Intent i1=new Intent(LoginActivity.this,Login.class);
+            Intent i1=new Intent(LoginActivity.this,Register.class);
               startActivity(i1);
             }
         });
@@ -215,7 +219,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                             Toast.makeText(LoginActivity.this, "Authentication paasedd.",
                                     Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent i2=new Intent(LoginActivity.this,UseGPS.class);
+
+                            Intent i2=new Intent(LoginActivity.this,SearchManager.class);
                             startActivity(i2);
                        //     updateUI(user);
                         } else {
@@ -404,6 +409,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         protected void onCancelled() {
             mAuthTask = null;
             showProgress(false);
+        }
+        private void signOut() {
+            // Firebase sign out
+            FirebaseAuth.getInstance().signOut();
         }
     }
 }

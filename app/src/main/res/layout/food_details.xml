@@ -1,51 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    >
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        app:srcCompat="@mipmap/xyz" />
+
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="15dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <EditText
         android:id="@+id/editText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Paneer Masala"
-        android:hint="Item"
+        android:text=""
+        android:hint="Food Item"
+
+        android:layout_marginTop="51dp"
         android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/imageView5"
-        android:layout_marginEnd="17dp" />
+        android:layout_alignStart="@+id/editText4" />
 //2 is foodtype 4 is quantity 5 is shelflife 7 is others
     <EditText
         android:id="@+id/editText4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editText2"
-        android:layout_below="@+id/editText2"
-        android:layout_marginTop="32dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="For 2 people Max"
-        android:hint="Quantity" />
+        android:inputType="number"
+        android:text=""
+        android:hint="Quantity"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/editText2"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="24dp" />
 
     <EditText
         android:id="@+id/editText5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="1 day"
-        android:hint="Shelf Life"
+        android:inputType="number"
+        android:text=""
+        android:hint="Shelf Life ( in hours)"
+        android:layout_marginTop="17dp"
         android:layout_below="@+id/editText4"
         android:layout_alignStart="@+id/editText4" />
 
@@ -53,48 +49,85 @@
         android:id="@+id/editText7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text=""
         android:hint="Other Details"
-        android:layout_below="@+id/editText5"
-        android:layout_alignStart="@+id/editText5" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/butter_paneer_masala"
-        android:layout_below="@+id/editText7"
-        android:layout_alignStart="@+id/editText7"
-        android:layout_marginTop="12dp" />
+        android:layout_marginTop="13dp"
+        android:layout_below="@+id/editText14"
+        android:layout_alignStart="@+id/editText14" />
 
     <Button
+        android:textAllCaps="false"
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Donate"
-        android:onClick="onClick"
-        android:layout_marginTop="48dp"
-        android:layout_below="@+id/editText7"
-        android:layout_alignStart="@+id/imageView5" />
 
-    <Button
-        android:id="@+id/button5"
+       android:textColor="@android:color/holo_red_light"
+        android:onClick="onClick"
+        android:clickable="true"
+        android:layout_marginBottom="13dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/frameLayout" />
+
+
+    <EditText
+        android:id="@+id/editText14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose another picture"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/imageView2" />
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Veg/Non-Veg"
+        android:text=""
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/editText5"
+        android:layout_alignStart="@+id/editText5" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText4"
-        android:spinnerMode="dropdown"
-        android:layout_alignStart="@+id/imageView5" />
+        android:text="Upload Picture"
+android:textAllCaps="false"
+        android:layout_below="@+id/frameLayout"
+        android:layout_alignStart="@+id/frameLayout" />
+
+    <FrameLayout
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:id="@+id/frameLayout"
+        android:layout_alignStart="@+id/editText7"
+        android:layout_below="@+id/editText7"
+        android:layout_above="@+id/button"
+        android:layout_alignEnd="@+id/editText7">
 
 
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="173dp"
+            android:layout_height="match_parent"
+            android:layout_alignEnd="@+id/editText7"
+            android:layout_alignStart="@+id/editText7"
+            android:layout_below="@+id/editText7"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+
+
+            app:srcCompat="@mipmap/uploadimage" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="21dp"
+        android:text="Your Location :"
+        android:visibility="invisible"
+        android:layout_alignBaseline="@+id/button"
+        android:layout_alignBottom="@+id/button"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
+
+
+
