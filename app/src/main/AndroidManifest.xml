@@ -35,8 +35,8 @@
         <activity
             android:name=".RequestManager"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden">
-    </activity>
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity android:name=".Resultactivity"></activity>
     </application>
 
 </manifest>

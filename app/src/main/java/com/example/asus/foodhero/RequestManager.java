@@ -161,7 +161,7 @@ public class RequestManager extends AppCompatActivity  implements NavigationView
                Iterable<DataSnapshot> dsi=dataSnapshot.getChildren();
                 for(DataSnapshot DS:dsi){
                     if(DS.child("donorid").getValue(String.class).equals(user.getUid())){
-                        Toast.makeText(RequestManager.this,DS.child("donorid").getValue(String.class),Toast.LENGTH_LONG).show();
+                       // Toast.makeText(RequestManager.this,DS.child("donorid").getValue(String.class),Toast.LENGTH_LONG).show();
                         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
                         navigationView.setNavigationItemSelectedListener(RequestManager.this);
                         TextView t1=(TextView)navigationView.getHeaderView(0).findViewById(R.id.textView);
@@ -233,7 +233,7 @@ public class RequestManager extends AppCompatActivity  implements NavigationView
                     // authenticate with your backend server, if you have one. Use
                     // FirebaseUser.getToken() instead.
                     String uid = user.getUid();
-                    Toast.makeText(RequestManager.this, name + email + " " + uid + " ", Toast.LENGTH_LONG).show();
+               //     Toast.makeText(RequestManager.this, name + email + " " + uid + " ", Toast.LENGTH_LONG).show();
 
                 }
                 FirebaseDatabase database= FirebaseDatabase.getInstance();
@@ -333,8 +333,10 @@ fd.setLandmark("Sector-5");
 
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_signout) {
+            FirebaseAuth.getInstance().signOut();
+            Intent i=new Intent(RequestManager.this,LoginActivity.class);
+startActivity(i);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

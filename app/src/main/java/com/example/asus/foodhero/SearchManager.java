@@ -37,6 +37,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -45,7 +48,7 @@ import java.util.jar.Manifest;
 public class SearchManager extends AppCompatActivity {
 
     Button button,b1;
-    TextView textView;
+    TextView textView,t;
     private static final int MY_PERMISSION_REQUEST_LOCATION=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,10 @@ public class SearchManager extends AppCompatActivity {
         setContentView(R.layout.use_gps);
         button=(Button)findViewById(R.id.button);
         b1=(Button)findViewById(R.id.button2);
+        t=(TextView)findViewById(R.id.textView14);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String str="You are logged in as "+user.getEmail();
+        t.setText(str);
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

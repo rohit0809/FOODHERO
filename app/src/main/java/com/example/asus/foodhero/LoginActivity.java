@@ -103,10 +103,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 if (user != null) {
                     // User is signed in
 
-
+//Toast.makeText(LoginActivity.this,"User"+user.getEmail(),Toast.LENGTH_LONG).show();
+                   Intent i=new Intent(LoginActivity.this,SearchManager.class);
+                  startActivity(i);
                         //  Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
+                    Toast.makeText(LoginActivity.this,"User Signed Out",Toast.LENGTH_LONG).show();
                     //   Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
                 // ...
