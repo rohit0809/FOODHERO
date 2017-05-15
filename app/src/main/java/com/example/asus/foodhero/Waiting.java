@@ -56,7 +56,7 @@ public class Waiting extends AppCompatActivity  {
                     String vid=child.child("donorid").getValue(String.class);
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                    if(vid.equals(user.getEmail())){
+                    if(vid.equals(user.getEmail())&&child.child("flag").getValue(String.class).equals("1")){
                        // Toast.makeText(Waiting.this,"Oh yeah"+vid,Toast.LENGTH_SHORT).show();
                         NotificationCompat.Builder mBuilder =
                                 (NotificationCompat.Builder) new NotificationCompat.Builder(Waiting.this)
@@ -67,6 +67,7 @@ public class Waiting extends AppCompatActivity  {
                         Intent resultIntent = new Intent(Waiting.this, Resultactivity.class);
 // Because clicking the notification opens a new ("special") activity, there's
 // no need to create an artificial back stack.
+                     //   resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         PendingIntent resultPendingIntent =
                                 PendingIntent.getActivity(
                                         Waiting.this,
