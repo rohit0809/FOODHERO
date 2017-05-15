@@ -42,6 +42,7 @@ public class Waiting extends AppCompatActivity  {
         FirebaseApp.initializeApp(Waiting.this, options, "secondary");
         FirebaseApp app = FirebaseApp.getInstance("secondary");
 // Get the database for the other app.
+        //
         FirebaseDatabase secondaryDatabase = FirebaseDatabase.getInstance(app);
         DatabaseReference mRef = secondaryDatabase.getReference().child("Request_Database");
 
