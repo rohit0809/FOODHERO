@@ -32,7 +32,7 @@ public class Waiting extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.waiting_for);
 
-        b1 = (Button) findViewById(R.id.button4);
+     //   b1 = (Button) findViewById(R.id.button4);
         FirebaseOptions options = new FirebaseOptions.Builder()
                 .setApplicationId("1:78886963576:android:ecf2087dcddfbb4e") // Required for Analytics.
                 .setApiKey("AIzaSyBHMSIBI0ak-mXLUyD_f2n-j6Nyo6YJyBA") // Required for Auth.
@@ -68,6 +68,7 @@ public class Waiting extends AppCompatActivity  {
 // Because clicking the notification opens a new ("special") activity, there's
 // no need to create an artificial back stack.
                      //   resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        /*dcndjkc*/
                         PendingIntent resultPendingIntent =
                                 PendingIntent.getActivity(
                                         Waiting.this,
