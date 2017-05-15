@@ -1,8 +1,10 @@
 package com.example.asus.foodhero;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.print.PrintDocumentAdapter;
 import android.provider.MediaStore;
@@ -14,6 +16,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -48,11 +51,13 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.example.asus.foodhero.R.id.imageView;
 
 
-public class RequestManager extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener{
+public class RequestManager extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener,AdapterView.OnItemSelectedListener{
     private String[] arraySpinner;
  String ss;
     private Uri filePath;
@@ -62,7 +67,7 @@ public class RequestManager extends AppCompatActivity  implements NavigationView
     EditText e1,e2,e3,e4;
     Button b1,b2,b3;
     ImageView im;
-    TextView tv;
+    TextView tv,tv1;
     private StorageReference mStorageRef;
     private void showFileChooser() {
         Intent intent = new Intent();
@@ -139,7 +144,31 @@ public class RequestManager extends AppCompatActivity  implements NavigationView
        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
        setSupportActionBar(toolbar);
 
+        final Spinner spinner = (Spinner) findViewById(R.id.spinner);
+tv1=(TextView)findViewById(R.id.textView3);
+        // Spinner click listener
+        spinner.setOnItemSelectedListener(this);
 
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+
+        categories.add("Sector 1 Saltlake");
+        categories.add("Sector 2 Saltlake");
+        categories.add("Sector 3 Saltlake");
+        categories.add("Sector 5 Saltlake");
+        categories.add("Kankurgachi");
+        categories.add("Howrah");
+        categories.add("Shobhabaazar");
+        categories.add("Kestopur"); categories.add("Park Street"); categories.add(" New Town Rajarhat");
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        spinner.setAdapter(dataAdapter);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -169,6 +198,7 @@ public class RequestManager extends AppCompatActivity  implements NavigationView
                         t2.setText(DS.child("name").getValue(String.class));
                         t1.setText(user.getEmail());
                     }
+
                 }
 
 
@@ -263,10 +293,14 @@ public class RequestManager extends AppCompatActivity  implements NavigationView
                 );
                 uploadFile(id);
                 fd.setRequestid(id);
-fd.setLandmark("Sector-5");
-                myRef.child(id).setValue(fd);
-                Intent i=new Intent(RequestManager.this,Waiting.class);
-                startActivity(i);
+int status=0;
+fd.setLandmark(spinner.getSelectedItem().toString());
+
+
+                    myRef.child(id).setValue(fd);
+                    Intent i = new Intent(RequestManager.this, Waiting.class);
+                    startActivity(i);
+
             }
         });
 
@@ -310,9 +344,7 @@ fd.setLandmark("Sector-5");
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -345,4 +377,17 @@ startActivity(i);
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // On selecting a spinner item
+        String item = parent.getItemAtPosition(position).toString();
+        ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
+        // Showing selected spinner item
+        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }
