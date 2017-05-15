@@ -45,7 +45,7 @@ public class Waiting extends AppCompatActivity  {
         //
         FirebaseDatabase secondaryDatabase = FirebaseDatabase.getInstance(app);
         DatabaseReference mRef = secondaryDatabase.getReference().child("Request_Database");
-
+//
         mRef.addListenerForSingleValueEvent(new com.google.firebase.database.ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
