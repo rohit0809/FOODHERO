@@ -38,6 +38,7 @@ public class Waiting extends AppCompatActivity  {
                 .setApiKey("AIzaSyBHMSIBI0ak-mXLUyD_f2n-j6Nyo6YJyBA") // Required for Auth.
                 .setDatabaseUrl("https://foodhero-volunteer.firebaseio.com/") // Required for RTDB.
                 .build();
+        //nkj
         FirebaseApp.initializeApp(Waiting.this, options, "secondary");
         FirebaseApp app = FirebaseApp.getInstance("secondary");
 // Get the database for the other app.
