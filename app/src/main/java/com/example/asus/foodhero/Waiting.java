@@ -31,7 +31,7 @@ public class Waiting extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.waiting_for);
-
+//
      //   b1 = (Button) findViewById(R.id.button4);
         FirebaseOptions options = new FirebaseOptions.Builder()
                 .setApplicationId("1:78886963576:android:ecf2087dcddfbb4e") // Required for Analytics.
