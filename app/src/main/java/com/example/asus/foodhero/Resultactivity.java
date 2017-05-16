@@ -128,7 +128,7 @@ tname=(TextView)findViewById(R.id.textView9);
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+//
             }
 
 
