@@ -6,7 +6,7 @@ package com.example.asus.foodhero;
 
 public class Food_Item {
     String name;
-
+//
     public String getName() {
         return name;
     }//
