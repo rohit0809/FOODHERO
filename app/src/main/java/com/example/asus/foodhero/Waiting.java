@@ -51,7 +51,7 @@ public class Waiting extends AppCompatActivity  {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Iterable<DataSnapshot> children=dataSnapshot.getChildren();
 
-                //String email = user.getEmail();
+                //String email = user.getEmail();//
                boolean flag=false;
 
                 for(DataSnapshot child: children){
