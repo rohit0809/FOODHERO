@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "809033476012",
-    "firebase_url": "https://foodhero-3684a.firebaseio.com",
-    "project_id": "foodhero-3684a",
-    "storage_bucket": "foodhero-3684a.appspot.com"
+    "project_number": "720826695419",
+    "firebase_url": "https://foodhero-master-9ffd7.firebaseio.com",
+    "project_id": "foodhero-master-9ffd7",
+    "storage_bucket": "foodhero-master-9ffd7.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:809033476012:android:ecf2087dcddfbb4e",
+        "mobilesdk_app_id": "1:720826695419:android:ecf2087dcddfbb4e",
         "android_client_info": {
           "package_name": "com.example.asus.foodhero"
         }
       },
       "oauth_client": [
         {
-          "client_id": "809033476012-fmjifdmq6uf9frkcn5bge01l5kr7rqmi.apps.googleusercontent.com",
+          "client_id": "720826695419-jljm9sjv7839tm5oltc91nc3mrmpnf0i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.asus.foodhero",
+            "certificate_hash": "f59180efae6c69f561412371f2671a2464c631aa"
+          }
+        },
+        {
+          "client_id": "720826695419-g2mi3q4umo47fflai46ralofcd8kmf57.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBgcXnyghWHjOATO9lKbiDmPLEO6SiXkxQ"
+          "current_key": "AIzaSyBklLsH2Y1tM-oc7zRPitvmwd5W8rXeelI"
         }
       ],
       "services": {
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "720826695419-g2mi3q4umo47fflai46ralofcd8kmf57.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
