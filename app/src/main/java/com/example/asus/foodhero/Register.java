@@ -159,7 +159,7 @@ name=(EditText)findViewById(R.id.editText);
     static {
         System.loadLibrary("native-lib");
     }
-
+//
     @Override
     public void onClick(View v) {
         // Write a message to the database
