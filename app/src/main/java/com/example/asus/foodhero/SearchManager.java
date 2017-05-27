@@ -49,6 +49,8 @@ public class SearchManager extends AppCompatActivity {
 
     Button button,b1;
     TextView textView,t;
+    private  Double donlat;
+    private Double donlong;
     private static final int MY_PERMISSION_REQUEST_LOCATION=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,8 @@ public class SearchManager extends AppCompatActivity {
                 Intent i = new Intent(SearchManager.this, RequestManager
                         .class);
                 i.putExtra("epuzzle",textView.getText().toString());
+                i.putExtra("donlat",donlat);
+                i.putExtra("donlong",donlong);
                 startActivity(i);
 
 
@@ -98,7 +102,9 @@ public class SearchManager extends AppCompatActivity {
                     Location location=locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                     try {
                         textView.setText(hereLocation(location.getLatitude(), location.getLongitude()));
-
+                        donlat=location.getLatitude();
+                        donlong=location.getLongitude();
+                       // Toast.makeText(SearchManager.this,(int)Math.round(donlat)+"smELSE",Toast.LENGTH_LONG).show();
                     }
                     catch (Exception e)
                     {
@@ -126,6 +132,9 @@ public class SearchManager extends AppCompatActivity {
                         Location location=locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                         try {
                             textView.setText(hereLocation(location.getLatitude(), location.getLongitude()));
+                            donlat=location.getLatitude();
+                            donlong=location.getLongitude();
+                            Toast.makeText(this,(int)Math.round(donlat)+"SMif",Toast.LENGTH_LONG).show();
                         }
                         catch (Exception e)
                         {

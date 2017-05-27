@@ -67,6 +67,8 @@
         android:layout_height="wrap_content"
         android:text="Register"
         android:onClick="onClick"
+        android:background = "@drawable/rounded"
+        android:textColor="@android:color/white"
         android:layout_below="@+id/editText10"
         android:layout_alignStart="@+id/editText10"
         android:layout_marginTop="20dp" />

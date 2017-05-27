@@ -78,14 +78,14 @@
 
             <Button
                 android:id="@+id/email_sign_in_button"
-                style="?android:textAppearanceSmall"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Sign In"
                 android:textAllCaps="false"
-
-                android:textColor="@android:color/holo_green_dark"
+                android:background = "@drawable/rounded"
+                android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
             <Button
@@ -95,8 +95,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Register"
+                android:background = "@drawable/rounded"
+                android:textColor="@android:color/white"
                 android:textAllCaps="false"
-                android:textColor="@android:color/holo_red_light"
+
                 android:textStyle="bold" />
 
         </LinearLayout>

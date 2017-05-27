@@ -122,7 +122,8 @@
         <Button
             android:id="@+id/button5"
             android:layout_width="wrap_content"
-
+            android:background = "@drawable/rounded"
+            android:textColor="@android:color/white"
             android:layout_height="36dp"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="70dp"
@@ -131,6 +132,8 @@
             android:layout_alignEnd="@+id/textView8" />
 
         <Button
+            android:background = "@drawable/rounded"
+            android:textColor="@android:color/white"
             android:id="@+id/button8"
             android:layout_width="wrap_content"
             android:layout_height="36dp"

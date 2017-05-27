@@ -67,6 +67,7 @@ public class RequestManager extends AppCompatActivity  implements NavigationView
     EditText e1,e2,e3,e4;
     Button b1,b2,b3;
     ImageView im;
+    private Double lat,lon;
     TextView tv,tv1;
     private StorageReference mStorageRef;
     private void showFileChooser() {
@@ -143,7 +144,9 @@ public class RequestManager extends AppCompatActivity  implements NavigationView
         setContentView(R.layout.activity_navdrawer);
        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
        setSupportActionBar(toolbar);
-
+        lat= getIntent().getDoubleExtra("donlat",0);
+        lon= getIntent().getDoubleExtra("donlong",0);
+        Toast.makeText(this,(int)Math.round(lat)+"rm",Toast.LENGTH_LONG).show();
         final Spinner spinner = (Spinner) findViewById(R.id.spinner);
 tv1=(TextView)findViewById(R.id.textView3);
         // Spinner click listener
@@ -225,7 +228,7 @@ tv1=(TextView)findViewById(R.id.textView3);
             String location = "Current Location:" + intent.getExtras().getString("epuzzle");
         Toast.makeText(this, location, Toast.LENGTH_LONG).show();
         tv=(TextView)findViewById(R.id.textView4);
-        tv.setText(location);
+        tv.setText(intent.getExtras().getString("epuzzle"));
         b3=(Button)findViewById(R.id.button6);
         im=(ImageView)findViewById(R.id.imageView2);
         //rb1=(RadioButton)findViewById(R.id.radioButton);
@@ -299,6 +302,8 @@ fd.setLandmark(spinner.getSelectedItem().toString());
 
                     myRef.child(id).setValue(fd);
                     Intent i = new Intent(RequestManager.this, Waiting.class);
+                i.putExtra("donlati",lat);
+                i.putExtra("donlongi",lon);
                     startActivity(i);
 
             }

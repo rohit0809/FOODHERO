@@ -3,13 +3,17 @@ package com.example.asus.foodhero;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,12 +31,54 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 public class Waiting extends AppCompatActivity  {
 
     Button b1;
+    private Double longit,lati;
+    private static final int PROGRESS = 0x1;
+    private Handler mHandler = new Handler();
+    private ProgressBar mProgress;
+    private int mProgressStatus = 0;
+    ProgressDialog progressDoalog;
+    private int progressBarStatus=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.waiting_for);
-//
-     //   b1 = (Button) findViewById(R.id.button4);
+       lati=getIntent().getDoubleExtra("donlati",0);
+        longit   =getIntent().getDoubleExtra("donlongi",0);
+    //   Toast.makeText(this,(int)Math.round(lati)+"WAT",Toast.LENGTH_LONG).show();
+// Toast.makeText(this,"WAIT",Toast.LENGTH_LONG).show();
+        //   b1 = (Button) findViewById(R.id.button4);
+
+
+        progressDoalog = new ProgressDialog(this);
+        progressDoalog.setMax(100);
+        progressDoalog.setMessage("Volunteer will be joining soon..");
+        progressDoalog.setTitle("Please Wait for notification..");
+        progressDoalog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progressDoalog.show();
+        final Handler handle = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                progressDoalog.incrementProgressBy(4);
+            }
+        };
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    while (progressDoalog.getProgress() <= progressDoalog.getMax()) {
+                        Thread.sleep(600);
+                        handle.sendMessage(handle.obtainMessage());
+                        if (progressDoalog.getProgress() == progressDoalog
+                                .getMax()) {
+                            progressDoalog.dismiss();
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
         FirebaseOptions options = new FirebaseOptions.Builder()
                 .setApplicationId("1:78886963576:android:ecf2087dcddfbb4e") // Required for Analytics.
                 .setApiKey("AIzaSyBHMSIBI0ak-mXLUyD_f2n-j6Nyo6YJyBA") // Required for Auth.
@@ -52,24 +98,30 @@ public class Waiting extends AppCompatActivity  {
                 Iterable<DataSnapshot> children=dataSnapshot.getChildren();
 
                 //String email = user.getEmail();//
-               boolean flag=false;
+                boolean flag=false;
 
                 for(DataSnapshot child: children){
                     String vid=child.child("donorid").getValue(String.class);
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
                     if(vid.equals(user.getEmail())&&child.child("flag").getValue(String.class).equals("1")){
-                       // Toast.makeText(Waiting.this,"Oh yeah"+vid,Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(Waiting.this,"Oh yeah"+vid,Toast.LENGTH_SHORT).show();
                         NotificationCompat.Builder mBuilder =
                                 (NotificationCompat.Builder) new NotificationCompat.Builder(Waiting.this)
                                         .setSmallIcon(R.mipmap.xyz)
                                         .setContentTitle("Request Processed")
+                                        .setDefaults(Notification.DEFAULT_SOUND)
+                                        .setAutoCancel(true)
                                         .setContentText(child.child("volunteername").getValue(String.class)+" is arriving.."+" Click for details");
-                       // NotificationCompat.Builder mBuilder;
+                        // NotificationCompat.Builder mBuilder;
                         Intent resultIntent = new Intent(Waiting.this, Resultactivity.class);
+                        resultIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                       // Toast.makeText(Waiting.this,(int)Math.round(lati)+"WAT2",Toast.LENGTH_LONG).show();
+                       resultIntent.putExtra("donlat",lati);
+                       resultIntent.putExtra("donlong",longit);
 // Because clicking the notification opens a new ("special") activity, there's
 // no need to create an artificial back stack.
-                     //   resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        //   resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         /*dcndjkc*/
                         PendingIntent resultPendingIntent =
                                 PendingIntent.getActivity(
@@ -78,6 +130,7 @@ public class Waiting extends AppCompatActivity  {
                                         resultIntent,
                                         PendingIntent.FLAG_UPDATE_CURRENT
                                 );
+
                         mBuilder.setContentIntent(resultPendingIntent);
 // Sets an ID for the notification
                         int mNotificationId = 001;
@@ -86,6 +139,8 @@ public class Waiting extends AppCompatActivity  {
                                 (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 // Builds the notification and issues it.
                         mNotifyMgr.notify(mNotificationId, mBuilder.build());
+
+
                     }
 //Toast.makeText(Waiting.this,vid,Toast.LENGTH_SHORT).show();
                    /* if(vid.equals(email))
@@ -119,7 +174,7 @@ public class Waiting extends AppCompatActivity  {
                     address.setText("No Details Available.  ");
                     b.setEnabled(false);
                 }*/
-            }}
+                }}
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -129,21 +184,21 @@ public class Waiting extends AppCompatActivity  {
 
         });
 
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseOptions options = new FirebaseOptions.Builder()
-                        .setApplicationId("1:78886963576:android:ecf2087dcddfbb4e") // Required for Analytics.
-                        .setApiKey("AIzaSyBHMSIBI0ak-mXLUyD_f2n-j6Nyo6YJyBA") // Required for Auth.
-                        .setDatabaseUrl("https://foodhero-volunteer.firebaseio.com/") // Required for RTDB.
-                        .build();
-                FirebaseApp.initializeApp(Waiting.this, options, "secondary");
-                FirebaseApp app = FirebaseApp.getInstance("secondary");
+   /*  b1.setOnClickListener(new View.OnClickListener() {
+                                  @Override
+                                  public void onClick(View v) {
+                                      FirebaseOptions options = new FirebaseOptions.Builder()
+                                              .setApplicationId("1:78886963576:android:ecf2087dcddfbb4e") // Required for Analytics.
+                                              .setApiKey("AIzaSyBHMSIBI0ak-mXLUyD_f2n-j6Nyo6YJyBA") // Required for Auth.
+                                              .setDatabaseUrl("https://foodhero-volunteer.firebaseio.com/") // Required for RTDB.
+                                              .build();
+                                      FirebaseApp.initializeApp(Waiting.this, options, "secondary");
+                                      FirebaseApp app = FirebaseApp.getInstance("secondary");
 // Get the database for the other app.
-                FirebaseDatabase secondaryDatabase = FirebaseDatabase.getInstance(app);
-                DatabaseReference mRef = secondaryDatabase.getReference().child("Request_Database");
+                                      FirebaseDatabase secondaryDatabase = FirebaseDatabase.getInstance(app);
+                                      DatabaseReference mRef = secondaryDatabase.getReference().child("Request_Database");
 
-            }
-        }
-        );
+                                  }
+                              }
+        );*/
     }}

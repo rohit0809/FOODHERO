@@ -33,7 +33,9 @@ TextView tname;
     private Handler mHandler = new Handler();
     private ProgressBar mProgress;
     private int mProgressStatus = 0;
+    private String lat,lon;
     ProgressDialog progressDoalog;
+    private Double donlat,donlong;
     TextView temail;TextView tphone;TextView texpect;TextView titem;
 private int progressBarStatus=0;
 
@@ -43,10 +45,25 @@ private int progressBarStatus=0;
     protected void onCreate(Bundle savedInstanceState) {
 
 
+
         super.onCreate(savedInstanceState);
+        donlat=getIntent().getDoubleExtra("donlat",0);
+        donlong=getIntent().getDoubleExtra("donlong",0);
+      //  Toast.makeText(this,(int)Math.round(donlat)+"mC",Toast.LENGTH_LONG).show();
+        // Obtain the SupportMapFragment and get notified when the map is rea
         setContentView(R.layout.assigned);
 tname=(TextView)findViewById(R.id.textView9);
         b1=(Button)findViewById(R.id.button8);
+        b2=(Button)findViewById(R.id.button5);
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Resultactivity.this,FetchLocation.class);
+               intent.putExtra("lat",donlat);
+                intent.putExtra("long",donlong);
+                startActivity(intent);
+            }
+        });
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,6 +139,8 @@ tname=(TextView)findViewById(R.id.textView9);
                        tphone.setText(child.child("volph").getValue(String.class));
                         texpect.setText(child.child("exp_time").getValue(String.class));
                         titem.setText(child.child("itemname").getValue(String.class));
+lat=child.child("lat").getValue(String.class);
+                        lon=child.child("long").getValue(String.class);
                     }
 
                 }}

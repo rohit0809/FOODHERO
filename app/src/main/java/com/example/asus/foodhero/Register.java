@@ -65,7 +65,7 @@ public class Register extends AppCompatActivity implements OnClickListener{
                             d.setEmail(email1);
                             d.setPassword(password1);
 
-                            Toast.makeText(Register.this,"testtttttt",Toast.LENGTH_SHORT).show();
+                         //   Toast.makeText(Register.this,"testtttttt",Toast.LENGTH_SHORT).show();
 
                             FirebaseDatabase database= FirebaseDatabase.getInstance();
                             DatabaseReference myRef = database.getReference("donors");
